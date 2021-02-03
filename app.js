@@ -157,7 +157,7 @@ app.post('/notifications', function (req, res) {
 });
 app.get('/showlog', function (req, res) {
     let log = require('./log.json');
-    res.json(log);
+    res.send(log);
 });
 
 app.listen(port);
