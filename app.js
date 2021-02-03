@@ -89,7 +89,7 @@ app.post("/checkout", (req, res) => {
 
     mercadopago.preferences.create(preference).then(function (response) {
         //res.json({id :response.body.id})
-        res.redirect(mp_preferences.body.init_point);
+        res.redirect(response.body.init_point);
     }).catch(function (error) {
         console.log(error);
     });
