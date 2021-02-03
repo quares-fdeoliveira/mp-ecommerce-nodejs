@@ -4,7 +4,7 @@ const mercadopago = require("mercadopago");
 
 //
 var port = process.env.PORT || 3004
-const BASE_URL = 'https://xxx.herokuapp.com/';
+const BASE_URL = 'https://quares-fdeoliveira-mp-nodejs.herokuapp.com/';
 
 //Config Express
 var app = express();
