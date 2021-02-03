@@ -146,6 +146,9 @@ app.get('/failure', function (req, res) {
 });
 
 app.get('/notifications', function (req, res) {
+
+    fs.writeFileSync('./logs.json', JSON.stringify(req.body));
+
     res.json({
         Payment: req.query.payment_id,
         Status: req.query.status,
