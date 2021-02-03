@@ -1,6 +1,8 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
+var bodyParser = require('body-parser');
 var path = require('path');
+const fs = require('fs');
 const mercadopago = require("mercadopago");
 
 //
@@ -14,6 +16,10 @@ app.set('view engine', 'handlebars');
 app.use(express.static('assets'));
 app.use('/assets', express.static(__dirname + '/assets'));
 app.use(express.urlencoded({ extended: false }));
+
+//BodyParse config
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //MP Config
@@ -147,7 +153,7 @@ app.get('/failure', function (req, res) {
 
 app.post('/notifications', function (req, res) {
 
-    fs.writeFileSync('./logs.json', JSON.stringify(req.body));
+    fs.writeFileSync('./log.json', JSON.stringify(req.body));
 
     res.json({
         Payment: req.query.payment_id,
