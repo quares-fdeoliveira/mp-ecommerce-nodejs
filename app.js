@@ -56,7 +56,8 @@ app.post("/checkout", (req, res) => {
             }
         ],
         payer: {
-            name: 'Lalo Landa',
+            name: "Lalo",
+            surname: "Landa",
             email: testBuyer.email,
             phone: {
                 area_code: "11",
