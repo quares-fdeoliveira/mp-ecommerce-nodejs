@@ -145,7 +145,7 @@ app.get('/failure', function (req, res) {
     }
 });
 
-app.get('/notifications', function (req, res) {
+app.post('/notifications', function (req, res) {
 
     fs.writeFileSync('./logs.json', JSON.stringify(req.body));
 
@@ -154,6 +154,10 @@ app.get('/notifications', function (req, res) {
         Status: req.query.status,
         MerchantOrder: req.query.merchant_order_id
     });
+});
+app.get('/showlog', function (req, res) {
+    let log = require('./log.json');
+    res.json(log);
 });
 
 app.listen(port);
