@@ -152,18 +152,8 @@ app.get('/failure', function (req, res) {
 });
 
 app.post('/notifications', function (req, res) {
-
-    fs.writeFileSync('./log.json', JSON.stringify(req.body));
-
-    res.json({
-        Payment: req.query.payment_id,
-        Status: req.query.status,
-        MerchantOrder: req.query.merchant_order_id
-    });
-});
-app.get('/showlog', function (req, res) {
-    let log = require('./log.json');
-    res.send(log);
+    fs.writeFile('./assets/log.txt', JSON.stringify(req.body));
+    res.sendStatus(200);
 });
 
 app.listen(port);
