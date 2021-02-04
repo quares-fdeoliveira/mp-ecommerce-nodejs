@@ -38,6 +38,7 @@ mercadopago.configure({
     integrator_id: 'dev_24c65fb163bf11ea96500242ac130004'
 });
 
+
 app.get('/', function (req, res) {
     res.render('home', { mp_view: "home" });
 });
@@ -152,7 +153,10 @@ app.get('/failure', function (req, res) {
 });
 
 app.post('/notifications', function (req, res) {
-    fs.writeFile('./assets/log.txt', JSON.stringify(req.body));
+    fs.appendFile('./assets/log.txt', `\n${new Date()} ---> ${JSON.stringify(req.body)}`, function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+      });
     res.sendStatus(200);
 });
 
